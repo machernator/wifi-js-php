@@ -14,6 +14,28 @@ search.onkeyup = function (e) {
 		autocomplete.style.top = bcr.y + window.scrollY + bcr.height + 'px';
 		autocomplete.style.width = bcr.width + 'px';
 	}
+
+	// Async Request absetzen und die Anwort ins autocomplete Feld schreiben
+
+	// aktuellen value auslesen und an den Request weitergeben
+	const searchText = this.value;
+	fetch('data.json')
+		// Arrow function
+		// wandelt den Text in der Response in ein Objekt um
+		// und erzeugt ein Promise, das mit einem weiteren
+		// then verarbeitet wird.
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+	/*
+	// Alte Schreibweise anonyme Funktion
+	.then(function (response) {
+		console.log(response);
+	}); */
 };
 
 // blur event - wenn das input Feld verlassen wird
