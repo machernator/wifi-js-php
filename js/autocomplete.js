@@ -19,7 +19,7 @@ search.onkeyup = function (e) {
 
 	// aktuellen value auslesen und an den Request weitergeben
 	const searchText = this.value;
-	fetch('data.json')
+	fetch('data.json?search=' + searchText)
 		// Arrow function
 		// wandelt den Text in der Response in ein Objekt um
 		// und erzeugt ein Promise, das mit einem weiteren
@@ -32,7 +32,7 @@ search.onkeyup = function (e) {
 			console.error('Error:', error);
 		});
 	/*
-	// Alte Schreibweise anonyme Funktion
+	// Alte Schreibweise anonyme Funktion, heute arrow function
 	.then(function (response) {
 		console.log(response);
 	}); */
