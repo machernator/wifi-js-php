@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AJAX Demo</title>
+</head>
+<body>
+<h1>JSON laden</h1>
+<button id="btn">Laden</button>
+
+<script>
+const btn = document.getElementById('btn');
+
+/*
+	onclick kann EINE Funktion dem Event Listener hinzfügen.
+	addEventListener erlaubt es, dem selben Event MEHRERE Funktionen
+	hinzuzufügen.
+*/
+btn.addEventListener('click', function(e){
+	// Erlaubt es mir asynchrone Requests abzusetzen.
+	const xhr = new XMLHttpRequest();
+	// Open -> Konfiguriert den Request für den Zeitpunkt des Absendens
+	// WENN du dann gesendet wirst, schickst du einen GET Request and die URL data.json
+	xhr.open('GET', 'data.json');
+
+	// Event Handler https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+	xhr.onreadystatechange = function(e) {
+		// fertig geladen, erfolgreicher request
+		if(this.readyState === 4 && this.status === 200) {
+			/*
+				Der geladene Text ist immer vom Typ String.
+				Damit wir den json Text als Objekt ansprechen können,
+				müssen wir den String in ein Objekt umwandeln.
+			*/
+			const data = JSON.parse(this.responseText);
+			console.log(data.hobbies);
+		}
+		// TODO: error handling, wenn status nicht 200
+	};
+
+	// send -> die Konfig. aus open wird verwendet
+	xhr.send();
+});
+</script>
+</body>
+</html>
