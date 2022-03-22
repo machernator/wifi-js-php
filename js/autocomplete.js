@@ -14,8 +14,6 @@ search.onkeyup = function (e) {
 		autocomplete.style.top = bcr.y + window.scrollY + bcr.height + 'px';
 		autocomplete.style.width = bcr.width + 'px';
 	}
-
-
 };
 
 // blur event - wenn das input Feld verlassen wird
