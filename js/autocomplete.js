@@ -17,3 +17,9 @@ search.onkeyup = function (e) {
 
 
 };
+
+// blur event - wenn das input Feld verlassen wird
+search.onblur = function (e) {
+	// Feld wieder verstecken.
+	autocomplete.classList.remove('show');
+};
