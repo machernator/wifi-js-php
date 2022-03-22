@@ -24,3 +24,9 @@
 	background-color: #E0E0E0;
 	cursor: pointer;
 }
+
+input[type=text]:focus {
+	outline: 0;
+	background-color: #F3F3F3;
+	box-shadow: 0 0 0 transparent;
+}
