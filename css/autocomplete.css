@@ -1,0 +1,26 @@
+.autocomplete {
+	border: 1px solid #999;
+	position: absolute;
+	min-width: 30em;
+}
+
+.autocomplete ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.autocomplete li {
+	line-height: 1.8;
+	padding: 0 1em;
+	transition: background-color 0.4s;
+}
+
+.autocomplete li:nth-child(odd) {
+	background-color: #F3F3F3;
+}
+
+.autocomplete li:hover {
+	background-color: #E0E0E0;
+	cursor: pointer;
+}
