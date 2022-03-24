@@ -35,7 +35,25 @@ search.onkeyup = function (e) {
 		.then(response => response.json())
 		// Data ist der Response Text als JSON Objekt
 		.then(data => {
-			console.log(data);
+			// Ul in autocomplete erstellen und befüllen
+			// ul im Speicher erstellt
+			const myUl = document.createElement('ul');
+			// Schleife über data objekt, für jeden Eintrag ein li erstellen
+			for (let i = 0; i < data.length; i++) {
+				// aktuelles Element aus data
+				const element = data[i];
+				// neues Li Element erzeugen
+				const myLi = document.createElement('li');
+				// den Namen aus dem aktuellen Element auslesen und ins li reinschreiben
+				myLi.innerText = element.name;
+				// Das li Element dem Ul Element anfügen
+				myUl.appendChild(myLi);
+			}
+			// Vorherige Einträge aus autocomplete löschen
+			autocomplete.innerHTML = '';
+			// das neue ul Elment in autocomplete reinschreiben
+			autocomplete.appendChild(myUl);
+
 		})
 		.catch((error) => {
 			console.error('Error:', error);
