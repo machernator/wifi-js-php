@@ -1,5 +1,6 @@
-{
-	"name": "Thomas Macher",
-	"hobbies": "talking",
-	"address": "Hogwarts"
-}
+[
+	{"id": 12, "name": "Hund"},
+	{"id": 15, "name": "Katze"},
+	{"id": 18, "name": "Orange"},
+	{"id": 22, "name": "Lexikon"}
+]

@@ -27,12 +27,13 @@ search.onkeyup = function (e) {
 
 	// aktuellen value auslesen und an den Request weitergeben
 	const searchText = this.value;
-	fetch('data.json?search=' + searchText)
+	fetch('ac-data.json?search=' + searchText)
 		// Arrow function
 		// wandelt den Text in der Response in ein Objekt um
 		// und erzeugt ein Promise, das mit einem weiteren
 		// then verarbeitet wird.
 		.then(response => response.json())
+		// Data ist der Response Text als JSON Objekt
 		.then(data => {
 			console.log(data);
 		})
