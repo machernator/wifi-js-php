@@ -2,6 +2,13 @@
 	border: 1px solid #999;
 	position: absolute;
 	min-width: 30em;
+	/* per default verstecken */
+	display: none;
+}
+
+.autocomplete.show {
+	/* wenn nötig wieder anzeigen */
+	display: block;
 }
 
 .autocomplete ul {
