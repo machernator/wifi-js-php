@@ -3,12 +3,20 @@ let search = document.getElementById('search');
 let autocomplete = document.getElementById('autocomplete');
 
 // Event Listener zuweisen
+/*
+	// addEventListener erlaubt das Hinzufügen mehrerer Funktionen
+	// zusätzlich können mit removeEventListener events wieder entfernt werden
+	search.addEventListener('keyup', function(e){ a funciton });
+	search.addEventListener('keyup', function(e){ another function });
+*/
+
 search.onkeyup = function (e) {
-	// Falls nicht vorhanden, klasse show hinzufügen
+	// Falls nicht vorhanden, klasse show hinzufügen. Nur 1x hinzufügen
 	if (!autocomplete.classList.contains('show')) {
 		autocomplete.classList.add('show');
 		// this im Kontext event: das Element, dem das Event zugewiesen wurde
 		// Breite, Höhe, viewport Koordinaten auslesen
+		// hier wäre auch search statt this möglich
 		const bcr = this.getBoundingClientRect();
 		autocomplete.style.left = bcr.x + window.scrollX + 'px';
 		autocomplete.style.top = bcr.y + window.scrollY + bcr.height + 'px';
