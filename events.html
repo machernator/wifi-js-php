@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Events</title>
+	<style>
+		button	{
+			display: block;
+			margin-bottom: 1em;
+		}
+
+		.btn-holder {
+			padding: 20px;
+			background: rgb(195, 238, 195);
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">Button 1</button>
+	<div class="btn-holder" id="btnHolder">
+		<button>Button 2</button>
+		<button>Button 3</button>
+		<button>Button 4</button>
+		<button>Button 5</button>
+		<button>Button 6</button>
+		<button>Button 7</button>
+	</div>
+<script>
+// Events mit onevent zuweisen
+const btn1 = document.getElementById('btn1');
+btn1.onclick = function(e) {
+	console.log(e);
+};
+
+const btnHolder = document.getElementById('btnHolder');
+btnHolder.onclick = function(e) {
+	/*
+		e.target = Empfänger Element des Events, kann ein Kind Element sein.
+		e.currentTarget = Auslöser des Events, gleich mit this
+
+		Dem Elternelement wurde ein Event Listener gegeben. In unserer Funktion können
+		wir nun unterscheiden, welches Kind Element eigentlich geklickt wurde.
+
+	*/
+
+	// Aufgabe: Unterhalb des geklickten Buttons eine Kopie erstellen
+
+	// 1. Herausfinden, ob überhaupt ein Button geklickt wurde
+	if (e.target.tagName == "BUTTON") {
+		// 2. das geklickte Button Element klonen
+		const newButton = e.target.cloneNode(true);
+		newButton.innerText += ' copy';
+		// 3. Das geklonte Element unterhalb des Buttons mit angepasstem Text einfügen
+		/*
+			beforebegin = vor dem aktuellen element,
+			afterbegin = als erstes Kindelement,
+			beforeend = als letztes Kindelement,
+			afterend = nach dem aktuellen Element
+		*/
+		e.target.insertAdjacentElement('afterend', newButton);
+	}
+};
+
+</script>
+</body>
+</html>
