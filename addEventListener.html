@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>addEventListener & Functions</title>
+	<style>
+		button {
+			display: block;
+			margin-bottom: 1em;
+		}
+
+		.btn-holder {
+			padding: 20px;
+			background: rgb(195, 238, 195);
+		}
+	</style>
+</head>
+
+<body>
+	<button id="btn1">Button 1</button>
+	<button id="btn2">Button 2</button>
+	<button id="btn3">Button 3</button>
+
+	<script>
+		function onButtonClicked(e) {
+			console.log(this);
+		}
+
+		function elementTagName(e) {
+			console.log(this.tagName);
+			// Die Funktion entfernt sich selbst aus den Event Listeners
+			// Anonyme Fuktionen können so NICHT entfernt werden.
+			this.removeEventListener('click', elementTagName);
+		}
+
+		// mit onclick
+		const btn1 = document.getElementById('btn1');
+		const btn2 = document.getElementById('btn2');
+		const btn3 = document.getElementById('btn3');
+
+		// NEU: benannte Funktionen zuweisen
+		/*
+			WICHTIG: Beim Zuweisen von benannten Funktionen wird
+			der Name OHNE () angegeben. Würde ich () mitschreiben,
+			würde die Funktion auf der rechten Seite der Zuweisung
+			ausgeführt werden und ihr potentieller Rückgabewert
+			an onclick zugwiesen werden. -> Klassischer Fehler
+			Der Name der Funktion ist wie ein VARIABLEN Name zu
+			behandeln. Dh. der Name steht für den Wert vom Datentyp
+			Funktion.
+		*/
+		btn1.onclick = onButtonClicked;
+		btn2.onclick = onButtonClicked;
+
+		// Benannte Funktionen und addEventListener
+		// Vorteil 1 gegenüber onevent: es können mehrere Funktionen zugewiesen werden  (anonym oder benannt)
+		btn3.addEventListener('click', onButtonClicked);
+		btn3.addEventListener('click', elementTagName);
+		// Vorteil 2: Events können wieder entfernt werden (siehe elementTagName)
+
+
+
+	</script>
+</body>
+
+</html>
