@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>addEventListener & Functions</title>
+	<style>
+		button {
+			display: block;
+			margin-bottom: 1em;
+		}
+
+		.btn {
+			background-color: rgb(23, 93, 126);
+			color: white;
+			border: 0;
+			padding: 0.3em 1em;
+			font-size: inherit;
+		}
+
+		.btn-holder {
+			padding: 20px;
+			background: rgb(195, 238, 195);
+		}
+	</style>
+</head>
+
+<body>
+	<button class="btn">Button 1</button>
+	<button class="btn">Button 2</button>
+	<button class="btn">Button 3</button>
+
+	<a href="#" class="btn">Kein Button</a>
+
+	<script>
+		function onButtonClicked(e) {
+			console.log(this);
+		}
+
+		// Zuweisen eines Events an mehrere Elemente
+		const buttons = document.querySelectorAll('button.btn');
+		// Rezept: ein Event mehreren Elementen aus einer NodeList (wie Array).
+		buttons.forEach(element => element.onclick = onButtonClicked);
+		// Alternativ:
+		/*
+			buttons.forEach(function(element) {
+				element.onclick = onButtonClicked
+			});
+		*/
+
+
+
+	</script>
+</body>
+
+</html>
