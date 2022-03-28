@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Duplicate form Element</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<style>
+		body {
+			padding: 1em;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="">
+		<div class="mb-3" id="inputUser">
+			<label for="exampleFormControlInput1" class="form-label">User</label>
+			<input type="text" class="form-control" id="user_1" placeholder="enter user name">
+		</div>
+		<button type="button" class="btn btn-secondary" id="btnAddUser">+</button>
+	</form>
+	<script>
+		const btnAddUser = document.getElementById('btnAddUser');
+		const inputUser = document.getElementById('inputUser');
+		let counter = 1;
+
+		btnAddUser.onclick = function(e) {
+			const newUser = inputUser.cloneNode(true);
+			e.target.insertAdjacentElement('beforebegin', newUser);
+			// Label Selektieren innerhalb eines Eltern Elements
+			const label = newUser.querySelector('label');
+			// Text einfügen + Zähler
+			label.innerText += ' ' + counter;
+			// Zähler eins hochzählen
+			counter++;
+
+			// TODO: alle nötigen Attribute wie id in den Kind Elementen anpassen.
+		};
+	</script>
+</body>
+
+</html>
