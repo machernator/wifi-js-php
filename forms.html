@@ -52,7 +52,11 @@
 					switch(el.type) {
 						case 'email':
 							if (!validateEmail(el.value)) {
-								console.log(el.name + ' ungültige E-Mail');
+								showFormError(el, el.name + ' ungültige E-Mail');
+								continue;
+							}
+							// keine weitere Validierung nötig wenn gültig
+							else {
 								continue;
 							}
 						break;
@@ -70,12 +74,12 @@
 
 				// Weitere Validierungen
 				if (el.minLength && el.value.length < el.minLength) {
-					console.log(el.name + ' too short ');
+					showFormError(el, el.name + ' too short ');
 					continue;
 				}
 
 				if (el.maxLength && el.value.length > el.maxLength) {
-					console.log(el.name + ' too long ');
+					showFormError(el, el.name + ' too long ');
 					continue;
 				}
 
@@ -90,12 +94,25 @@
 		}
 
 		function showFormError(field, message) {
+			// Abfragen, ob nicht schon eine Fehlermeldung vorhanden ist
+			// field.nextElementSibling
+
+			// Wenn vorhanden, bestitzt es die Klasse invalid-feedback
+
+				// Wenn ja, im gefundenen Element nur die Message ändern, function ist fertig -> return;
+
 			// Beispiel  https://getbootstrap.com/docs/5.0/forms/validation/
 			// div mit der Klasse invalid-feedback erzeugen
+			const error = document.createElement('div');
+			error.classList.add('invalid-feedback');
+			// Alternativ error.className = 'invalid-feedback';
+			error.innerText = message;
 
 			// div nach dem field einfügen
+			field.insertAdjacentElement('afterend', error);
 
 			// dem Feld eine Klasse zuweisen, die sie rot markiert
+			field.classList.add('is-invalid');
 		}
 
 		/**
