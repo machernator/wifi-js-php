@@ -9,9 +9,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<style>
-		input:invalid {
+		/* input:invalid {
 			border-color: red;
-		}
+		} */
 	</style>
 </head>
 
@@ -19,9 +19,12 @@
 	<div class="container">
 		<form action="" method="post">
 			<div class="mb-4">
-				<label for="exampleFormControlInput1" class="form-label">Email address</label>
-				<input type="email" required class="form-control" id="exampleFormControlInput1"
-					placeholder="name@example.com">
+				<label for="email" class="form-label">Email address</label>
+				<input type="email" required class="form-control" id="email" name="email" placeholder="name@example.com">
+			</div>
+			<div class="mb-4">
+				<label for="name" class="form-label">Name</label>
+				<input type="text" required class="form-control" id="name" name="name" minlength="2" placeholder="Name">
 			</div>
 			<div class="mb-4">
 				<input type="submit" value="Senden" class="btn btn-primary">
@@ -30,12 +33,75 @@
 	</div>
 	<script>
 		function onValidateForm(e) {
+			// Felder auslesen
+			const form = e.currentTarget;
+			const fields = form.elements;
+
+			for (let i = 0; i < fields.length; i++) {
+				const el = fields[i];
+
+				// Ist required gesetzt und der value ausgefüllt?
+				if (el.required && el.value === '') {
+					showFormError(el, el.name + ' bitte ausfüllen!');
+					// Schleifendurchlauf beenden
+					continue;
+				}
+
+				// Unterscheide nach input type
+				if (el.tagName === 'INPUT') {
+					switch(el.type) {
+						case 'email':
+							if (!validateEmail(el.value)) {
+								console.log(el.name + ' ungültige E-Mail');
+								continue;
+							}
+						break;
+						case 'date':
+
+						break;
+						case 'checkbox':
+						break;
+						case 'submit':
+							continue;
+						break;
+						default:
+					}
+				}
+
+				// Weitere Validierungen
+				if (el.minLength && el.value.length < el.minLength) {
+					console.log(el.name + ' too short ');
+					continue;
+				}
+
+				if (el.maxLength && el.value.length > el.maxLength) {
+					console.log(el.name + ' too long ');
+					continue;
+				}
+
+				// TODO: weitere Validierungen
+			}
+
+
+
 			// Verhindere die Standard Operation des Tags
 			// hier: Formular wird nicht abgeschickt
-			// e.preventDefault();
+			 e.preventDefault();
 		}
 
-		function ValidateEmail(mail) {
+		function showFormError(field, message) {
+			// div mit der Klasse invalid-feedback erzeugen
+
+			// div nach dem field einfügen
+
+			// dem Feld eine Klasse zuweisen, die sie rot markiert
+		}
+
+		/**
+		 * check if mail address is valid
+		 * TODO: find better regex
+		 */
+		function validateEmail(mail) {
 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
 				return (true);
 			}
