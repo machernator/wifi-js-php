@@ -1,16 +1,28 @@
+function onCloseModal(e) {
+	modalWrapper.classList.remove('show');
+}
+
 const modalWrapper = document.getElementById('modalWrapper');
 const modalClose = document.getElementById('modalClose');
-const modalOpen = document.querySelector('.button-modal');
+const modalOpen = document.querySelectorAll('.button-modal');
 
-modalOpen.addEventListener('click', function (e) {
-	console.log('open');
-
-	modalWrapper.classList.add('show');
+/*
+	Haben wir mehrere Elemente selektiert, müssen wir in einer Schleife jedem
+	einzelnen Elment den Listener zuweisen.
+*/
+modalOpen.forEach(el => {
+	el.addEventListener('click', function (e) {
+		modalWrapper.classList.add('show');
+	});
 });
 
-modalClose.addEventListener('click', function (e) {
-	console.log('close');
-	modalWrapper.classList.remove('show');
+modalClose.addEventListener('click', onCloseModal);
+modalWrapper.addEventListener('click', function (e) {
+	// Nur wenn das umliegende Wrapper Element geklickt wurde ...
+	// Alternativ: e.target.isSameNode(e.currentTarget)
+	if (e.target === e.currentTarget) {
+		modalWrapper.classList.remove('show');
+	}
 });
 
 
