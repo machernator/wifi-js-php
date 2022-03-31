@@ -31,7 +31,7 @@ body {
 	min-width: 25em;
 	width: 70%;
 	max-width: 50em;
-	padding: 2em 1em;
+	padding: 0;
 
 	/*
 		Alternative zur Flexbox Position
@@ -41,12 +41,25 @@ body {
 	transform: translate(-50%, -50%); */
 }
 
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.3em 1em;
+	font-size: 0.9em;
+	line-height: 1.8;
+	text-transform: uppercase;
+	border-bottom: 1px solid #EAEAEA;
+}
+
 .modal-close {
 	display: block;
-	position: absolute;
-	right: 0.5rem;
-	top: 0.5rem;
-	border-radius: 50%;
-	border: 1px solid #999;
+	border: none;
+	background-color: transparent;
+	font-size: 1.5em;
+}
+
+.modal-body {
+	padding: 1em;
 }
 

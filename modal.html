@@ -11,7 +11,7 @@
 <body>
 <h1>Modal dialog</h1>
 <div>
-	<button class="pure-button pure-button-primary button-modal">Open</button>
+	<button class="pure-button pure-button-primary button-modal" data-url="/content1.json">Open</button>
 </div>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis delectus esse debitis dolore, dolores consequatur iure sequi minima deleniti! Exercitationem excepturi adipisci quibusdam impedit repellendus corporis. Laboriosam inventore eius aut!</p>
 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, omnis laboriosam obcaecati minus nobis esse aut, dolor provident doloremque expedita blanditiis ipsam quos pariatur dolorum. Ab modi aperiam et quaerat?</p>
@@ -28,8 +28,13 @@
 
 <div id="modalWrapper" class="modal-wrapper">
 	<div class="modal" id="modal">
-		<button class="modal-close" id="modalClose">&times;</button>
-		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam reiciendis minima veritatis cumque vel. Hic sapiente commodi illo. Nihil esse aliquam vel animi odio iure doloribus, labore quod placeat ducimus.</p>
+		<header class="modal-header" id="modalHeader">
+			<div class="modal-title">A Modal Dialog</div>
+			<button class="modal-close" id="modalClose">&times;</button>
+		</header>
+		<div class="modal-body" id="modalBody">
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam reiciendis minima veritatis cumque vel. Hic sapiente commodi illo. Nihil esse aliquam vel animi odio iure doloribus, labore quod placeat ducimus.</p>
+		</div>
 	</div>
 </div>
 
