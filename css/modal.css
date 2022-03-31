@@ -1,0 +1,52 @@
+body {
+	padding: 1em;
+}
+
+.modal-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* right: 0;
+	bottom: 0; */
+	width: 100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.3);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	display: none;
+}
+
+.modal-wrapper.show {
+	display: flex;
+}
+
+.modal {
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #999;
+	border-radius: 3px;
+	min-width: 25em;
+	width: 70%;
+	max-width: 50em;
+	padding: 2em 1em;
+
+	/*
+		Alternative zur Flexbox Position
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%); */
+}
+
+.modal-close {
+	display: block;
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	border-radius: 50%;
+	border: 1px solid #999;
+}
+
