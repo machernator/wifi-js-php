@@ -6,6 +6,7 @@ function pricesTable(prices) {
 		kommen kann
 	*/
 	const tbl = document.createElement('table');
+	tbl.classList.add('table',  'table-striped');
 	tbl.setAttribute('border', 1);
 	// Kopfzeile
 	const headerRow = document.createElement('tr');
